@@ -1,14 +1,17 @@
 import React from "react";
-import HorizontalBarChart from "./HorizontalBarChart";
-import LineChart from "./LineChart";
-import VerticalBarChart from "./VerticalBarChart";
+import HorizontalBarChart from "./components/HorizontalBarChart";
+import Layout from "./components/Layout";
+import LineChart from "./components/LineChart";
+import VerticalBarChart from "./components/VerticalBarChart";
 
 function App() {
   return (
     <div>
-      <VerticalBarChart />
-      <HorizontalBarChart />
-      <LineChart />
+      <Layout>
+        <VerticalBarChart />
+        <HorizontalBarChart />
+        <LineChart />
+      </Layout>
     </div>
   );
 }
