@@ -2,6 +2,7 @@ import React from "react";
 import HorizontalBarChart from "./components/HorizontalBarChart";
 import Layout from "./components/Layout";
 import LineChart from "./components/LineChart";
+import StackedBarChart from "./components/StackedBarChart";
 import VerticalBarChart from "./components/VerticalBarChart";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <VerticalBarChart data={data} labels={labels} />
         <HorizontalBarChart data={data} labels={labels} />
         <LineChart data={data} labels={labels} />
+        <StackedBarChart data={data} labels={labels} />
       </Layout>
     </div>
   );
