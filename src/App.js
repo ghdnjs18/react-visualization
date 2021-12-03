@@ -5,12 +5,14 @@ import LineChart from "./components/LineChart";
 import VerticalBarChart from "./components/VerticalBarChart";
 
 function App() {
+  const data = [50, 40, 30, 20, 30];
+  const labels = [2018, 2019, 2020, 2021, 2022];
   return (
     <div>
       <Layout>
-        <VerticalBarChart />
-        <HorizontalBarChart />
-        <LineChart />
+        <VerticalBarChart data={data} labels={labels} />
+        <HorizontalBarChart data={data} labels={labels} />
+        <LineChart data={data} labels={labels} />
       </Layout>
     </div>
   );

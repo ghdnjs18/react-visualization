@@ -1,7 +1,8 @@
 import { Chart } from "chart.js";
 import { useEffect, useRef } from "react";
 
-function LineChart() {
+function LineChart(props) {
+  const { data, labels } = props;
   const canvasDom = useRef(null);
 
   useEffect(() => {
@@ -9,10 +10,10 @@ function LineChart() {
     const lineChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: [2018, 2019, 2020, 2021, 2022],
+        labels: labels,
         datasets: [
           {
-            data: [1, 3, 5, 7, 2],
+            data: data,
           },
         ],
       },
