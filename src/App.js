@@ -9,6 +9,7 @@ import StackedBarChartwithGroups from "./components/BarChart/StackedBarChartwith
 import VerticalBarChart from "./components/BarChart/VerticalBarChart";
 
 import LineChart from "./components/LineChart/LineChart";
+import SteppedLineCharts from "./components/LineChart/SteppedLineCharts";
 
 function App() {
   const data = [50, 40, 30, 20, 30];
@@ -24,6 +25,7 @@ function App() {
         <FloatingBars data={data} labels={labels} />
         <BarChartBorderRadius data={data} labels={labels} />
         <LineChart data={data} labels={labels} />
+        <SteppedLineCharts data={data} labels={labels} />
       </Layout>
     </div>
   );
