@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import HorizontalBarChart from "./HorizontalBarChart";
+import LineChart from "./LineChart";
 import VerticalBarChart from "./VerticalBarChart";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <VerticalBarChart />
       <HorizontalBarChart />
+      <LineChart />
     </div>
   );
 }
