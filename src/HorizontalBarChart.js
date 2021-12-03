@@ -6,14 +6,28 @@ function HorizontalBarChart() {
 
   useEffect(() => {
     const ctx = canvasDom.current.getContext("2d");
-    const horizontalBarChart = new Chart(ctx, {});
+    const horizontalBarChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [19, 20, 21, 22],
+        datasets: [
+          {
+            label: "세로정렬",
+            data: [50, 40, 30, 20, 30],
+          },
+        ],
+      },
+      options: {
+        indexAxis: "y",
+      },
+    });
     return () => {
       horizontalBarChart.destroy();
     };
   }, []);
   return (
     <div>
-      <canvas />
+      <canvas ref={canvasDom} />
     </div>
   );
 }
