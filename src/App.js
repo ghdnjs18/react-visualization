@@ -1,4 +1,5 @@
 import React from "react";
+import FloatingBars from "./components/FloatingBars";
 import HorizontalBarChart from "./components/HorizontalBarChart";
 import Layout from "./components/Layout";
 import LineChart from "./components/LineChart";
@@ -17,6 +18,7 @@ function App() {
         <LineChart data={data} labels={labels} />
         <StackedBarChart data={data} labels={labels} />
         <StackedBarChartwithGroups data={data} labels={labels} />
+        <FloatingBars data={data} labels={labels} />
       </Layout>
     </div>
   );
