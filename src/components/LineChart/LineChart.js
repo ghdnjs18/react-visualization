@@ -1,7 +1,7 @@
 import { Chart } from "chart.js";
 import { useEffect, useRef } from "react";
 
-function LineChart(props) {
+const LineChart = (props) => {
   const { data, labels } = props;
   const canvasDom = useRef(null);
 
@@ -27,6 +27,6 @@ function LineChart(props) {
       <canvas ref={canvasDom} />
     </div>
   );
-}
+};
 
 export default LineChart;

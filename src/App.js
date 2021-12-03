@@ -23,6 +23,7 @@ function App() {
         <StackedBarChartwithGroups data={data} labels={labels} />
         <FloatingBars data={data} labels={labels} />
         <BarChartBorderRadius data={data} labels={labels} />
+        <LineChart data={data} labels={labels} />
       </Layout>
     </div>
   );
