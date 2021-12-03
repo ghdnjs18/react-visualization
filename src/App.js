@@ -1,14 +1,14 @@
 import React from "react";
-import BarChartBorderRadius from "./components/BarChartBorderRadius";
-import FloatingBars from "./components/FloatingBars";
-import HorizontalBarChart from "./components/HorizontalBarChart";
 import Layout from "./components/Layout";
+
 import BarChartBorderRadius from "./components/BarChart/BarChartBorderRadius";
 import FloatingBars from "./components/BarChart/FloatingBars";
 import HorizontalBarChart from "./components/BarChart/HorizontalBarChart";
 import StackedBarChart from "./components/BarChart/StackedBarChart";
 import StackedBarChartwithGroups from "./components/BarChart/StackedBarChartwithGroups";
 import VerticalBarChart from "./components/BarChart/VerticalBarChart";
+
+import LineChart from "./components/LineChart/LineChart";
 
 function App() {
   const data = [50, 40, 30, 20, 30];
