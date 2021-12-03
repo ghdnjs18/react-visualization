@@ -1,4 +1,5 @@
 import React from "react";
+import BarChartBorderRadius from "./components/BarChartBorderRadius";
 import FloatingBars from "./components/FloatingBars";
 import HorizontalBarChart from "./components/HorizontalBarChart";
 import Layout from "./components/Layout";
@@ -19,6 +20,7 @@ function App() {
         <StackedBarChart data={data} labels={labels} />
         <StackedBarChartwithGroups data={data} labels={labels} />
         <FloatingBars data={data} labels={labels} />
+        <BarChartBorderRadius data={data} labels={labels} />
       </Layout>
     </div>
   );
