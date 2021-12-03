@@ -9,6 +9,7 @@ import StackedBarChartwithGroups from "./components/BarChart/StackedBarChartwith
 import VerticalBarChart from "./components/BarChart/VerticalBarChart";
 
 import LineChart from "./components/LineChart/LineChart";
+import MultiAxisLineChart from "./components/LineChart/MultiAxisLineChart";
 import SteppedLineCharts from "./components/LineChart/SteppedLineCharts";
 
 function App() {
@@ -19,12 +20,13 @@ function App() {
       <Layout>
         <VerticalBarChart data={data} labels={labels} />
         <HorizontalBarChart data={data} labels={labels} />
-        <LineChart data={data} labels={labels} />
         <StackedBarChart data={data} labels={labels} />
         <StackedBarChartwithGroups data={data} labels={labels} />
         <FloatingBars data={data} labels={labels} />
         <BarChartBorderRadius data={data} labels={labels} />
+
         <LineChart data={data} labels={labels} />
+        <MultiAxisLineChart data={data} labels={labels} />
         <SteppedLineCharts data={data} labels={labels} />
       </Layout>
     </div>
