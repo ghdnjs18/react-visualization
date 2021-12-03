@@ -3,10 +3,12 @@ import BarChartBorderRadius from "./components/BarChartBorderRadius";
 import FloatingBars from "./components/FloatingBars";
 import HorizontalBarChart from "./components/HorizontalBarChart";
 import Layout from "./components/Layout";
-import LineChart from "./components/LineChart";
-import StackedBarChart from "./components/StackedBarChart";
-import StackedBarChartwithGroups from "./components/StackedBarChartwithGroups";
-import VerticalBarChart from "./components/VerticalBarChart";
+import BarChartBorderRadius from "./components/BarChart/BarChartBorderRadius";
+import FloatingBars from "./components/BarChart/FloatingBars";
+import HorizontalBarChart from "./components/BarChart/HorizontalBarChart";
+import StackedBarChart from "./components/BarChart/StackedBarChart";
+import StackedBarChartwithGroups from "./components/BarChart/StackedBarChartwithGroups";
+import VerticalBarChart from "./components/BarChart/VerticalBarChart";
 
 function App() {
   const data = [50, 40, 30, 20, 30];
