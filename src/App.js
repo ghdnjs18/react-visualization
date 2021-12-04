@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+
 import Layout from "./components/Layout";
 
 import BarChartBorderRadius from "./components/BarChart/BarChartBorderRadius";
@@ -18,6 +20,9 @@ function App() {
   const data = [50, 40, 30, 20, 30];
   const labels = [2018, 2019, 2020, 2021, 2022];
   const [csv, setCsv] = useState([]);
+  const [monthBasePassenger, setMonthBasePassenger] = useState([]);
+
+  //
   const getCsvWithCallback = useCallback(async () => {
     try {
       const url = "http://localhost:3001/csv";
@@ -29,11 +34,48 @@ function App() {
     }
   }, []);
 
-  // 콜백이용
+  // 데이터 패치용 ( 콜백 사용 )
   useEffect(() => {
     getCsvWithCallback();
-    console.log(csv);
   }, [getCsvWithCallback]);
+
+  // console.log(csv);
+
+  // 데이터 처리용
+  useEffect(() => {
+    if (Array.isArray(csv) && csv.length) {
+      const monthBase = csv.reduce((acc, cur) => {
+        const month = cur["년월"];
+        const sum = Number(cur["합계"]);
+        const type = cur["구분"];
+
+        if (!acc.has(month)) {
+          acc.set(month, {
+            sum: 0,
+            getIn: 0,
+            getOff: 0,
+          });
+        }
+        const thisMonth = acc.get(month);
+        const getIn = thisMonth["getIn"];
+        const getOff = thisMonth["getOff"];
+        acc.set(month, {
+          sum: thisMonth["sum"] + sum,
+          getIn: type === "승차" ? getIn + sum : getIn,
+          getOff: type === "하차" ? getOff + sum : getOff,
+        });
+        return acc;
+      }, new Map());
+      // console.log(monthBase);
+      // monthBase의 형식에 따라 넘김
+      const monthData = Array.from(monthBase, ([key, value]) => ({
+        month: key,
+        data: value,
+      }));
+      setMonthBasePassenger(monthData);
+      // console.log(monthData);
+    }
+  }, [csv]);
 
   // 한번만 실행하는데에는 이런식으로 사용을 해도 상관은 없지만,
   // 값에 변경되는 것에 따라 useEffect를 사용하기 위해서는 useCallback을
