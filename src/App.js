@@ -103,7 +103,7 @@ function App() {
         <VerticalBarChart monthBasePassenger={monthBasePassenger} />
         <HorizontalBarChart monthBasePassenger={monthBasePassenger} />
         <StackedBarChart data={data} labels={labels} />
-        <StackedBarChartwithGroups data={data} labels={labels} />
+        <StackedBarChartwithGroups monthBasePassenger={monthBasePassenger} />
         <FloatingBars data={data} labels={labels} />
         <BarChartBorderRadius data={data} labels={labels} />
 
