@@ -14,14 +14,14 @@ import LineChart from "./components/LineChart/LineChart";
 import MultiAxisLineChart from "./components/LineChart/MultiAxisLineChart";
 import SteppedLineCharts from "./components/LineChart/SteppedLineCharts";
 
-import axios from "axios";
+import ScatterChart from "./components/OtherChart/ScatterChart";
 
 function App() {
   const data = [50, 40, 30, 20, 30];
   const labels = [2018, 2019, 2020, 2021, 2022];
   const [csv, setCsv] = useState([]);
   const [monthBasePassenger, setMonthBasePassenger] = useState([]);
-
+  const [busBasePassenger, setBusBasePassenger] = useState([]);
   //
   const getCsvWithCallback = useCallback(async () => {
     try {
@@ -41,7 +41,7 @@ function App() {
 
   // console.log(csv);
 
-  // 데이터 처리용
+  // mp 데이터 처리용
   useEffect(() => {
     if (Array.isArray(csv) && csv.length) {
       const monthBase = csv.reduce((acc, cur) => {
@@ -77,6 +77,55 @@ function App() {
     }
   }, [csv]);
 
+  // bp 데이터 처리
+  useEffect(() => {
+    if (Array.isArray(csv) && csv.length) {
+      const busBase = csv.reduce((acc, cur) => {
+        const busNo = cur["노선"];
+        const month = cur["년월"];
+        const sum = Number(cur["합계"]);
+        const type = cur["구분"];
+
+        if (!acc.has(busNo)) {
+          const monthMap = new Map();
+          acc.set(
+            busNo,
+            monthMap.set(month, {
+              sum: 0,
+              getIn: 0,
+              getOff: 0,
+            })
+          );
+        }
+        const thisBus = acc.get(busNo);
+        const data = thisBus.get(month);
+        const getIn = data ? Number(data["getIn"]) : 0;
+        const getOff = data ? Number(data["getOff"]) : 0;
+
+        thisBus.set(month, {
+          getIn: type === "승차" ? getIn + sum : getIn,
+          getOff: type === "하차" ? getOff + sum : getOff,
+        });
+
+        return acc;
+      }, new Map());
+      const bp = Array.from(busBase, ([key, value]) => {
+        return {
+          busNo: key,
+          data: Array.from(value, ([month, data]) => {
+            return {
+              month: month,
+              // data안의 데이터들을 펼쳐준다.
+              ...data,
+            };
+          }),
+        };
+      });
+      setBusBasePassenger(bp);
+      // console.log(bp);
+    }
+  }, [csv]);
+
   // 한번만 실행하는데에는 이런식으로 사용을 해도 상관은 없지만,
   // 값에 변경되는 것에 따라 useEffect를 사용하기 위해서는 useCallback을
   // 사용해서 변경사항에 따라 적용을 할 수가 있다?
@@ -95,8 +144,6 @@ function App() {
   //   fetchDate();
   // }, []);
 
-  console.log(csv);
-
   return (
     <div>
       <Layout>
@@ -110,6 +157,8 @@ function App() {
         <LineChart data={data} labels={labels} />
         <MultiAxisLineChart data={data} labels={labels} />
         <SteppedLineCharts data={data} labels={labels} />
+
+        <ScatterChart busBasePassenger={busBasePassenger} />
       </Layout>
     </div>
   );

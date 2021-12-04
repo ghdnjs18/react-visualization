@@ -7,7 +7,6 @@ import Chart from "chart.js/auto";
 
 function VerticalBarChart(props) {
   const { monthBasePassenger: mp } = props;
-  console.log(mp);
   const canvasDom = useRef(null);
 
   useEffect(() => {
