@@ -100,8 +100,7 @@ function App() {
   return (
     <div>
       <Layout>
-        <VerticalBarChart data={data} labels={labels} />
-        <HorizontalBarChart data={data} labels={labels} />
+        <VerticalBarChart monthBasePassenger={monthBasePassenger} />
         <StackedBarChart data={data} labels={labels} />
         <StackedBarChartwithGroups data={data} labels={labels} />
         <FloatingBars data={data} labels={labels} />
